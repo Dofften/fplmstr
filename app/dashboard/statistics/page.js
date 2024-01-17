@@ -20,7 +20,7 @@ async function getData() {
       next: { revalidate: 21600 },
       headers: {
         "Content-Type": "application/json",
-        Authorization: process.env.Authorization,
+        Authorization: process.env.AUTHORIZATION,
       },
     });
 

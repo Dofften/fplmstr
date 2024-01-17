@@ -14,7 +14,7 @@ async function getGameweek() {
         next: { revalidate: 21600 },
         headers: {
           "Content-Type": "application/json",
-          Authorization: process.env.Authorization,
+          Authorization: process.env.AUTHORIZATION,
         },
       }
     );
@@ -39,7 +39,7 @@ async function getAIdata() {
       next: { revalidate: 21600 },
       headers: {
         "Content-Type": "application/json",
-        Authorization: process.env.Authorization,
+        Authorization: process.env.AUTHORIZATION,
       },
     });
     // The return value is *not* serialized
@@ -64,7 +64,7 @@ async function getData(x) {
       next: { revalidate: 21600 },
       headers: {
         "Content-Type": "application/json",
-        Authorization: process.env.Authorization,
+        Authorization: process.env.AUTHORIZATION,
       },
     });
 
@@ -85,7 +85,7 @@ async function getFixtures() {
       next: { revalidate: 21600 },
       headers: {
         "Content-Type": "application/json",
-        Authorization: process.env.Authorization,
+        Authorization: process.env.AUTHORIZATION,
       },
     });
 
