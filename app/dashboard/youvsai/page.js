@@ -7,14 +7,17 @@ const lexend = Lexend({ subsets: ["latin"] });
 
 async function getGameweek() {
   try {
-    const res = await fetch(process.env.API_URL + "/api/gameweek_number", {
-      method: "GET",
-      next: { revalidate: 21600 },
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: process.env.Authorization,
-      },
-    });
+    const res = await fetch(
+      "https://fplmstrapi.crepant.com/api/gameweek_number",
+      {
+        method: "GET",
+        next: { revalidate: 21600 },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: process.env.Authorization,
+        },
+      }
+    );
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
@@ -31,7 +34,7 @@ async function getGameweek() {
 }
 async function getAIdata() {
   try {
-    const res = await fetch(process.env.API_URL + "/api/ai", {
+    const res = await fetch("https://fplmstrapi.crepant.com/api/ai", {
       method: "GET",
       next: { revalidate: 21600 },
       headers: {
@@ -56,7 +59,7 @@ async function getAIdata() {
 
 async function getData(x) {
   try {
-    const res = await fetch(process.env.API_URL + `/api/fpl/${x}`, {
+    const res = await fetch(`https://fplmstrapi.crepant.com/api/fpl/${x}`, {
       method: "GET",
       next: { revalidate: 21600 },
       headers: {
@@ -77,7 +80,7 @@ async function getData(x) {
 }
 async function getFixtures() {
   try {
-    const res = await fetch(process.env.API_URL + "/api/fixtures", {
+    const res = await fetch("https://fplmstrapi.crepant.com/api/fixtures", {
       method: "GET",
       next: { revalidate: 21600 },
       headers: {
