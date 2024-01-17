@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { authOptions } from "@/lib/authOptions";
 
 import DataTable from "@/app/dashboard/statistics/data-table";
@@ -15,24 +14,36 @@ export const metadata = {
 
 async function getData() {
   // Fetch data from your API here.
-  const res = await fetch("https://fplmstrapi.crepant.com/api/players", {
-    method: "GET",
-    next: { revalidate: 21600 },
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.Authorization,
-    },
-  });
+  try {
+    const res = await fetch(process.env.API_URL + "/api/players", {
+      method: "GET",
+      next: { revalidate: 21600 },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.Authorization,
+      },
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch players data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching players data:", error.message);
+    throw error; // Re-throw the error for the closest error boundary
   }
-
-  return res.json();
 }
 
 export default async function Statistics() {
   const session = await getServerSession(authOptions);
+  if (session === null) {
+    return (
+      <p>
+        No session found, please go to <a href="/signin">this page</a> to log in
+      </p>
+    );
+  }
   const name = session?.user.name;
   const data = await getData();
 

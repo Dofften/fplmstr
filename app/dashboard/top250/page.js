@@ -1,89 +1,105 @@
 import PlayerItem from "@/components/PlayerItem";
 import { getServerSession } from "next-auth";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { authOptions } from "@/lib/authOptions";
 import { Lexend } from "next/font/google";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
 async function getGameweek() {
-  const res = await fetch(
-    "https://fplmstrapi.crepant.com/api/gameweek_number",
-    {
+  try {
+    const res = await fetch(process.env.API_URL + "/api/gameweek_number", {
       method: "GET",
       next: { revalidate: 21600 },
       headers: {
         "Content-Type": "application/json",
         Authorization: process.env.Authorization,
       },
+    });
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch gameweek");
     }
-  );
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching gameweek:", error.message);
+    throw error; // Re-throw the error for the closest error boundary
   }
-
-  return res.json();
 }
 
 async function getData(x) {
-  const res = await fetch(`https://fplmstrapi.crepant.com/api/fpl/${x}`, {
-    method: "GET",
-    next: { revalidate: 21600 },
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.Authorization,
-    },
-  });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+  try {
+    const res = await fetch(process.env.API_URL + `/api/fpl/${x}`, {
+      method: "GET",
+      next: { revalidate: 21600 },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.Authorization,
+      },
+    });
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    throw error; // Re-throw the error for the closest error boundary
   }
-
-  return res.json();
 }
 
-async function getTopManagersData(x) {
-  const res = await fetch("https://fplmstrapi.crepant.com/api/top250", {
-    method: "GET",
-    next: { revalidate: 21600 },
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.Authorization,
-    },
-  });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+async function getTopManagersData() {
+  try {
+    const res = await fetch(process.env.API_URL + "/api/top250", {
+      method: "GET",
+      next: { revalidate: 21600 },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.Authorization,
+      },
+    });
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch top 250 data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching top 250 data:", error.message);
+    throw error; // Re-throw the error for the closest error boundary
   }
-
-  return res.json();
 }
 
 async function getFixtures() {
-  const res = await fetch("https://fplmstrapi.crepant.com/api/fixtures", {
-    method: "GET",
-    next: { revalidate: 21600 },
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.Authorization,
-    },
-  });
+  try {
+    const res = await fetch(process.env.API_URL + "/api/fixtures", {
+      method: "GET",
+      next: { revalidate: 21600 },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.Authorization,
+      },
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch fixtures");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching fixtures:", error.message);
+    throw error; // Re-throw the error for the closest error boundary
   }
-
-  return res.json();
 }
 
 // Helper function to get player position based on element type
@@ -136,8 +152,15 @@ export const metadata = {
 
 export default async function Top250() {
   const session = await getServerSession(authOptions);
+  if (session === null) {
+    return (
+      <p>
+        No session found, please go to <a href="/signin">this page</a> to log in
+      </p>
+    );
+  }
   const data = await getData(session?.user.id);
-  const top250 = await getTopManagersData(session?.user.id);
+  const top250 = await getTopManagersData();
   const fixtures = await getFixtures();
   const gameweek = await getGameweek();
   const allPoints = getAllPoints(data.my_team);

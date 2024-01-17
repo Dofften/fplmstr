@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { authOptions } from "@/lib/authOptions";
 import { Lexend } from "next/font/google";
 
@@ -12,6 +11,13 @@ export const metadata = {
 
 export default async function page() {
   const session = await getServerSession(authOptions);
+  if (session === null) {
+    return (
+      <p>
+        No session found, please go to <a href="/signin">this page</a> to log in
+      </p>
+    );
+  }
   const name = session?.user.name;
 
   return (

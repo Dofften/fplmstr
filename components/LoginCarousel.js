@@ -16,7 +16,6 @@ export function ImagesCarousel() {
     "/login.png",
     "/manager2.png",
     "/cup1.png",
-    "/football_manager_fantasy.png",
     "/cup.png",
     "/fpl-celebrate.png",
     "/aclarkdc_black_friday_graphics_of_Confident_young_Black_man_wit_f5535618-4a5b-4e49-8829-20128f58781c.png",

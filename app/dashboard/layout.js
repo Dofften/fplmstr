@@ -1,10 +1,8 @@
-import { Suspense } from "react";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/components/SessionProvider";
 import { redirect } from "next/navigation";
 import NavMenu from "@/components/NavMenu";
 import Footer from "@/components/Footer";
-import Loading from "@/app/dashboard/loading";
 
 export default async function RootLayout({ children }) {
   const NavItems = [
