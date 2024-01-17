@@ -11,7 +11,7 @@ const testimonials = [
         "FPL Mstr is incredibly user-friendly; sometimes, I can't help but question if it's actually handling all the intricate aspects of team management the way it promises.",
       author: {
         name: "Mumbua Kiilu",
-        role: "CEO at L4R",
+        role: "Founder of L4R",
       },
     },
     {
@@ -77,7 +77,7 @@ export function Testimonials() {
             Loved by managers worldwide.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Our service is so easy to use you could become a pro in ~10
+            Our service is so easy to use you could become a pro in no time!
           </p>
         </div>
         <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
