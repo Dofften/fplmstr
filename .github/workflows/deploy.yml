@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -18,17 +18,17 @@ jobs:
         with:
           node-version: 20.10.0  # Use the desired Node.js version
 
-      - name: Install dependencies and build Next.js app
+      - name: 🔨 Install dependencies and Build Project
         run: |
-          npm install  # Install project dependencies
+          npm install
           touch .env.local
           echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
           echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
           echo AUTHORIZATION=${{ secrets.AUTHORIZATION }} >> .env.local
-          npm run build  # Build Next.js app
+          npm run build
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      - name: 📂 Sync files and deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
         with:
           server: ftp.crepant.com
           username: ${{ secrets.USERNAME }}
