@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Logo from "@/public/FPL_Mstr.png"
+import Logo from "@/public/FPL_Mstr.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -72,7 +72,14 @@ export default function Nav({ className, items, ...props }) {
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">FPL Mstr</span>
-            <Image className="h-8 w-auto" src={Logo} height={800} width={1366} alt="FPL Mstr Logo" />
+            <Image
+              className="h-8 w-auto"
+              src={Logo}
+              height={800}
+              width={1366}
+              alt="FPL Mstr Logo"
+              unoptimized
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -121,7 +128,14 @@ export default function Nav({ className, items, ...props }) {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">FPL Mstr</span>
-            <Image className="h-8 w-auto" src={Logo} height={800} width={1366} alt="FPL Mstr Logo" />
+              <Image
+                className="h-8 w-auto"
+                src={Logo}
+                height={800}
+                width={1366}
+                alt="FPL Mstr Logo"
+                unoptimized
+              />
             </a>
             <button
               type="button"

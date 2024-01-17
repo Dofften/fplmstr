@@ -13,7 +13,13 @@ export function CallToAction() {
       className="relative overflow-hidden bg-[#963cff] py-32"
     >
       <div className="absolute h-full w-full top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
-        <Image src={backgroundImage} alt="" width={2347} height={1244} />
+        <Image
+          src={backgroundImage}
+          alt=""
+          width={2347}
+          height={1244}
+          unoptimized
+        />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">

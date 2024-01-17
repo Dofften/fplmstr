@@ -64,7 +64,13 @@ export function PrimaryFeatures() {
       className="relative overflow-hidden bg-[#963cff] pt-20 pb-28 sm:py-32"
     >
       <div className="absolute h-96 w-96 lg:h-full lg:w-full top-1/2 left-1/2 -translate-x-[44%] -translate-y-[42%]">
-        <Image src={backgroundImage} alt="" width={2245} height={1636} />
+        <Image
+          src={backgroundImage}
+          alt=""
+          width={2245}
+          height={1636}
+          unoptimized
+        />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
@@ -145,6 +151,7 @@ export function PrimaryFeatures() {
                         alt=""
                         priority
                         sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
+                        unoptimized
                       />
                     </div>
                   </Tab.Panel>

@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import Logo from "@/public/FPL_Mstr.png"
+import Logo from "@/public/FPL_Mstr.png";
 
 export default function HomeHeader({ className, items, ...props }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,7 +21,14 @@ export default function HomeHeader({ className, items, ...props }) {
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">FPL Mstr</span>
-            <Image className="h-8 w-auto" src={Logo} height={800} width={1366} alt="FPL Mstr Logo" />
+            <Image
+              className="h-8 w-auto"
+              src={Logo}
+              height={800}
+              width={1366}
+              alt="FPL Mstr Logo"
+              unoptimized
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -65,7 +72,13 @@ export default function HomeHeader({ className, items, ...props }) {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">FPL Mstr</span>
-            <Image className="h-8 w-auto" src={Logo} height={800} width={1366} alt="FPL Mstr Logo" />
+              <Image
+                className="h-8 w-auto"
+                src={Logo}
+                height={800}
+                width={1366}
+                alt="FPL Mstr Logo"
+              />
             </a>
             <button
               type="button"

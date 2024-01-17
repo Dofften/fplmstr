@@ -48,7 +48,13 @@ export default function page() {
                 mobile/tablet/laptop/desktop.
               </p>
             </div>
-            <Image alt="FPL Team ID" width={1920} height={1022} src={TeamID} />
+            <Image
+              alt="FPL Team ID"
+              width={1920}
+              height={1022}
+              src={TeamID}
+              unoptimized
+            />
           </div>
         </div>
       </section>

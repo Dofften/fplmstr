@@ -47,6 +47,7 @@ export function ImagesCarousel() {
                 width={500}
                 height={500}
                 loading="lazy"
+                unoptimized
               />
             </div>
           </CarouselItem>

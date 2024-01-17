@@ -29,6 +29,7 @@ export default function PlayerItem(props) {
                 width={70}
                 height={70}
                 className="bg-[length:33px_6px] md:bg-[length:44px_8px] lg:bg-[length:55px_10px]"
+                unoptimized
               />
             ) : (
               <Image
@@ -37,6 +38,7 @@ export default function PlayerItem(props) {
                 width={70}
                 height={70}
                 className="bg-[length:33px_6px] md:bg-[length:44px_8px] lg:bg-[length:55px_10px]"
+                unoptimized
               />
             )}
             <div className="flex flex-col w-[65px] md:w-[85px]">
@@ -84,6 +86,7 @@ export default function PlayerItem(props) {
               width={70}
               height={70}
               className="h-20 w-20 md:h-20 md:w-20"
+              unoptimized
             />
           ) : (
             <Image
@@ -92,6 +95,7 @@ export default function PlayerItem(props) {
               width={70}
               height={70}
               className="h-20 w-20 md:h-20 md:w-20"
+              unoptimized
             />
           )}
           <div className="flex flex-col p-4 space-y-2">
@@ -120,11 +124,13 @@ export default function PlayerItem(props) {
             <div className="text-xs">Form</div>
             <div className="font-bold">{props.form}</div>
           </div>
-              <Separator orientation="vertical" />
-              <div className="text-center">
-                <div className="text-xs">AI Prediction</div>
-                <div className="font-bold">{props.predictedPoints? (props.predictedPoints): "N/A"}</div>
-              </div>
+          <Separator orientation="vertical" />
+          <div className="text-center">
+            <div className="text-xs">AI Prediction</div>
+            <div className="font-bold">
+              {props.predictedPoints ? props.predictedPoints : "N/A"}
+            </div>
+          </div>
           <Separator orientation="vertical" />
           <div className="text-center">
             <div className="text-xs">Ownership</div>
