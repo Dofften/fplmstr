@@ -1,11 +1,11 @@
 {
-  "name": "fpl",
+  "name": "FPL Mstr",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "cross-env NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -28,6 +28,8 @@
     "embla-carousel-autoplay": "^8.0.0-rc17",
     "embla-carousel-react": "^8.0.0-rc17",
     "lucide-react": "^0.303.0",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
     "react": "^18",
