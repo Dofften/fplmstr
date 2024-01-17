@@ -28,7 +28,7 @@ jobs:
           npm run build
 
       - name: 📂 Sync files and deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ftp.crepant.com
           username: ${{ secrets.USERNAME }}
