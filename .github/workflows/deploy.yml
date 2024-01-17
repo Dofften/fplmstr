@@ -27,7 +27,7 @@ jobs:
           echo AUTHORIZATION=${{ secrets.AUTHORIZATION }} >> .env
           npm run build  # Build Next.js app
 
-      - name: Deploy via FTPS
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp.crepant.com
