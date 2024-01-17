@@ -21,10 +21,10 @@ jobs:
       - name: Install dependencies and build Next.js app
         run: |
           npm install  # Install project dependencies
-          touch .env
-          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env
-          echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env
-          echo AUTHORIZATION=${{ secrets.AUTHORIZATION }} >> .env
+          touch .env.local
+          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
+          echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
+          echo AUTHORIZATION=${{ secrets.AUTHORIZATION }} >> .env.local
           npm run build  # Build Next.js app
 
       - name: Deploy via FTP
