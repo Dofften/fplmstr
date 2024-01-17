@@ -29,7 +29,7 @@ export function CallToAction() {
             Get started
           </h2>
           <p className="mt-4 text-lg tracking-tight text-white">
-            Seize command of your FPL team with our FPL Mstr. Try now to
+            Professionally manage your FPL team with our FPL Mstr. Try now to
             experience the thrill of productive team management.
           </p>
           <a href="/signin">
