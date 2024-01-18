@@ -173,7 +173,7 @@ export default async function Top250() {
   return (
     <div>
       <div className="flex flex-col lg:flex-row justify-around">
-        <div className="m-3 rounded shadow-sm overflow-auto bg-gradient-to-b from-[#02efff] to-white to-40% md:w-2/4">
+        <div className="m-3 rounded shadow-sm overflow-auto bg-gradient-to-b from-[#02efff] to-white to-40% lg:w-2/4">
           <h3
             className={`${lexend.className} text-center py-4 px-4 mx-1 text-xl font-bold text-[#37003c]`}
           >
@@ -333,7 +333,7 @@ export default async function Top250() {
           </div>
         </div>
 
-        <div className="m-3 rounded shadow-sm overflow-auto bg-gradient-to-b from-[#02efff] to-white to-40% md:w-2/4">
+        <div className="m-3 rounded shadow-sm overflow-auto bg-gradient-to-b from-[#02efff] to-white to-40% lg:w-2/4">
           <h3
             className={`${lexend.className} text-center py-4 px-4 mx-1 text-xl font-bold text-[#37003c]`}
           >
