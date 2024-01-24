@@ -17,7 +17,6 @@ async function getData() {
   try {
     const res = await fetch("https://fplmstrapi.crepant.com/api/players", {
       method: "GET",
-      next: { revalidate: 3600 },
       headers: {
         "Content-Type": "application/json",
         Authorization: process.env.AUTHORIZATION,
