@@ -19,6 +19,10 @@ export default async function RootLayout({ children }) {
       href: `/dashboard/top250`,
     },
     {
+      title: "FPL Challenge",
+      href: `/dashboard/fpl-challenge`,
+    },
+    {
       title: "Fixtures",
       href: "/dashboard/fixtures",
     },
