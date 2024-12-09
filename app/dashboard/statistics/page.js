@@ -15,7 +15,7 @@ export const metadata = {
 async function getData() {
   // Fetch data from your API here.
   try {
-    const res = await fetch("https://fplmstrapi.crepant.com/api/players", {
+    const res = await fetch(`${process.env.API}/api/players`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

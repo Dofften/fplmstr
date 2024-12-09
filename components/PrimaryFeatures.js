@@ -78,10 +78,10 @@ export function PrimaryFeatures() {
             id="features-title"
             className={`${lexend.className} text-3xl tracking-tight text-white sm:text-4xl md:text-5xl`}
           >
-            Everything you need to win.
+            everything you need to win.
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
+            well everything you need if you aren’t that picky about minor
             details like vice captain choice.
           </p>
         </div>

@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  FPLMstrFrontend:
+    build: .
+    ports:
+      - "5000:3000"

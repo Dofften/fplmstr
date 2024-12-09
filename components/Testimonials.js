@@ -74,10 +74,10 @@ export function Testimonials() {
             id="testimonials-title"
             className={`${lexend.className} text-3xl tracking-tight text-slate-900 sm:text-4xl`}
           >
-            Loved by managers worldwide.
+            loved by serious fpl managers
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Our service is so easy to use you could become a pro in no time!
+            it’s so easy to use you’ll be a pro in 5 minutes
           </p>
         </div>
         <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">

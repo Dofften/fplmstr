@@ -14,17 +14,14 @@ const lexend = Lexend({ subsets: ["latin"] });
 
 async function getGameweek() {
   try {
-    const res = await fetch(
-      "https://fplmstrapi.crepant.com/api/gameweek_number",
-      {
-        method: "GET",
-        next: { revalidate: 21600 },
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: process.env.AUTHORIZATION,
-        },
-      }
-    );
+    const res = await fetch(`${process.env.API}/api/gameweek_number`, {
+      method: "GET",
+      next: { revalidate: 21600 },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.AUTHORIZATION,
+      },
+    });
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
@@ -42,7 +39,7 @@ async function getGameweek() {
 
 async function getData() {
   try {
-    const res = await fetch(`https://fplmstrapi.crepant.com/api/fpl-challenge`, {
+    const res = await fetch(`${process.env.API}/api/fpl-challenge`, {
       method: "GET",
       next: { revalidate: 21600 },
       headers: {
@@ -65,7 +62,7 @@ async function getData() {
 
 async function getFixtures() {
   try {
-    const res = await fetch("https://fplmstrapi.crepant.com/api/fixtures", {
+    const res = await fetch(`${process.env.API}/api/fixtures`, {
       method: "GET",
       next: { revalidate: 21600 },
       headers: {
@@ -120,14 +117,13 @@ function getPlayerFixtures(player, gameweek, fixtures) {
     });
 }
 
-
 function getAllPoints(data) {
-    let totalPoints = 0; // Initialize a variable to store the sum
-    for (let player of data) {
-      // Loop through each player object in ai_data
-      totalPoints += player.preds; // Add the player's predicted points to the sum
-    }
-    return totalPoints;
+  let totalPoints = 0; // Initialize a variable to store the sum
+  for (let player of data) {
+    // Loop through each player object in ai_data
+    totalPoints += player.preds; // Add the player's predicted points to the sum
+  }
+  return totalPoints;
 }
 
 export default async function Page() {
@@ -171,140 +167,92 @@ export default async function Page() {
         <div className="m-0 min-w-0 pt-8">
           <div className="min-h-[524px] pt-1 bg-[length:625px_460px] md:bg-[length:938px_690px] bg-[url('/pitch.svg')] bg-no-repeat bg-top">
             <div className="flex md:mb-1 max-w-[620px] m-auto justify-around">
-            {data.ai
-                  .filter((player) => player.element_type === 1)
-                  .map((player) => (
-                    <PlayerItem
-                      key={player.id}
-                      elementName={player.web_name}
-                      team={player.team_name}
-                      position={getPlayerPosition(player.element_type)}
-                      now_cost={player.now_cost}
-                      fixture={getPlayerFixtures(
-                        player,
-                        gameweek + 1,
-                        fixtures
-                      )}
-                      fixture1={getPlayerFixtures(
-                        player,
-                        gameweek + 2,
-                        fixtures
-                      )}
-                      fixture2={getPlayerFixtures(
-                        player,
-                        gameweek + 3,
-                        fixtures
-                      )}
-                      form={player.form}
-                      selected_by_percent={player.selected_by_percent}
-                      predictedPoints={player.preds}
-                      news={player.news != "" ? player.news : null}
-                      top250={player.top_ownership}
-                      image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
-                    />
-                  ))}
+              {data.ai
+                .filter((player) => player.element_type === 1)
+                .map((player) => (
+                  <PlayerItem
+                    key={player.id}
+                    elementName={player.web_name}
+                    team={player.team_name}
+                    position={getPlayerPosition(player.element_type)}
+                    now_cost={player.now_cost}
+                    fixture={getPlayerFixtures(player, gameweek + 1, fixtures)}
+                    fixture1={getPlayerFixtures(player, gameweek + 2, fixtures)}
+                    fixture2={getPlayerFixtures(player, gameweek + 3, fixtures)}
+                    form={player.form}
+                    selected_by_percent={player.selected_by_percent}
+                    predictedPoints={player.preds}
+                    news={player.news != "" ? player.news : null}
+                    top250={player.top_ownership}
+                    image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
+                  />
+                ))}
             </div>
             <div className="flex md:mb-1 max-w-[620px] m-auto justify-around">
-            {data.ai
-                  .filter((player) => player.element_type === 2)
-                  .map((player) => (
-                    <PlayerItem
-                      key={player.id}
-                      elementName={player.web_name}
-                      team={player.team_name}
-                      position={getPlayerPosition(player.element_type)}
-                      now_cost={player.now_cost}
-                      fixture={getPlayerFixtures(
-                        player,
-                        gameweek + 1,
-                        fixtures
-                      )}
-                      fixture1={getPlayerFixtures(
-                        player,
-                        gameweek + 2,
-                        fixtures
-                      )}
-                      fixture2={getPlayerFixtures(
-                        player,
-                        gameweek + 3,
-                        fixtures
-                      )}
-                      form={player.form}
-                      selected_by_percent={player.selected_by_percent}
-                      predictedPoints={player.preds}
-                      news={player.news != "" ? player.news : null}
-                      top250={player.top_ownership}
-                      image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
-                    />
-                  ))}
+              {data.ai
+                .filter((player) => player.element_type === 2)
+                .map((player) => (
+                  <PlayerItem
+                    key={player.id}
+                    elementName={player.web_name}
+                    team={player.team_name}
+                    position={getPlayerPosition(player.element_type)}
+                    now_cost={player.now_cost}
+                    fixture={getPlayerFixtures(player, gameweek + 1, fixtures)}
+                    fixture1={getPlayerFixtures(player, gameweek + 2, fixtures)}
+                    fixture2={getPlayerFixtures(player, gameweek + 3, fixtures)}
+                    form={player.form}
+                    selected_by_percent={player.selected_by_percent}
+                    predictedPoints={player.preds}
+                    news={player.news != "" ? player.news : null}
+                    top250={player.top_ownership}
+                    image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
+                  />
+                ))}
             </div>
             <div className="flex md:mb-1 max-w-[620px] m-auto justify-around">
-            {data.ai
-                  .filter((player) => player.element_type === 3)
-                  .map((player) => (
-                    <PlayerItem
-                      key={player.id}
-                      elementName={player.web_name}
-                      team={player.team_name}
-                      position={getPlayerPosition(player.element_type)}
-                      now_cost={player.now_cost}
-                      fixture={getPlayerFixtures(
-                        player,
-                        gameweek + 1,
-                        fixtures
-                      )}
-                      fixture1={getPlayerFixtures(
-                        player,
-                        gameweek + 2,
-                        fixtures
-                      )}
-                      fixture2={getPlayerFixtures(
-                        player,
-                        gameweek + 3,
-                        fixtures
-                      )}
-                      form={player.form}
-                      selected_by_percent={player.selected_by_percent}
-                      predictedPoints={player.preds}
-                      news={player.news != "" ? player.news : null}
-                      top250={player.top_ownership}
-                      image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
-                    />
-                  ))}
+              {data.ai
+                .filter((player) => player.element_type === 3)
+                .map((player) => (
+                  <PlayerItem
+                    key={player.id}
+                    elementName={player.web_name}
+                    team={player.team_name}
+                    position={getPlayerPosition(player.element_type)}
+                    now_cost={player.now_cost}
+                    fixture={getPlayerFixtures(player, gameweek + 1, fixtures)}
+                    fixture1={getPlayerFixtures(player, gameweek + 2, fixtures)}
+                    fixture2={getPlayerFixtures(player, gameweek + 3, fixtures)}
+                    form={player.form}
+                    selected_by_percent={player.selected_by_percent}
+                    predictedPoints={player.preds}
+                    news={player.news != "" ? player.news : null}
+                    top250={player.top_ownership}
+                    image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
+                  />
+                ))}
             </div>
             <div className="flex mb-4 md:mb-1 max-w-[620px] m-auto justify-around">
-            {data.ai
-                  .filter((player) => player.element_type === 4)
-                  .map((player) => (
-                    <PlayerItem
-                      key={player.id}
-                      elementName={player.web_name}
-                      team={player.team_name}
-                      position={getPlayerPosition(player.element_type)}
-                      now_cost={player.now_cost}
-                      fixture={getPlayerFixtures(
-                        player,
-                        gameweek + 1,
-                        fixtures
-                      )}
-                      fixture1={getPlayerFixtures(
-                        player,
-                        gameweek + 2,
-                        fixtures
-                      )}
-                      fixture2={getPlayerFixtures(
-                        player,
-                        gameweek + 3,
-                        fixtures
-                      )}
-                      form={player.form}
-                      selected_by_percent={player.selected_by_percent}
-                      predictedPoints={player.preds}
-                      news={player.news != "" ? player.news : null}
-                      top250={player.top_ownership}
-                      image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
-                    />
-                  ))}
+              {data.ai
+                .filter((player) => player.element_type === 4)
+                .map((player) => (
+                  <PlayerItem
+                    key={player.id}
+                    elementName={player.web_name}
+                    team={player.team_name}
+                    position={getPlayerPosition(player.element_type)}
+                    now_cost={player.now_cost}
+                    fixture={getPlayerFixtures(player, gameweek + 1, fixtures)}
+                    fixture1={getPlayerFixtures(player, gameweek + 2, fixtures)}
+                    fixture2={getPlayerFixtures(player, gameweek + 3, fixtures)}
+                    form={player.form}
+                    selected_by_percent={player.selected_by_percent}
+                    predictedPoints={player.preds}
+                    news={player.news != "" ? player.news : null}
+                    top250={player.top_ownership}
+                    image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
+                  />
+                ))}
             </div>
           </div>
         </div>
