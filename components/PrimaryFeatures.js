@@ -10,9 +10,10 @@ import screenshotyou from "@/public/dashboardScreenshot.png";
 import screenshotai from "@/public/youvsai.png";
 import screenshottop250 from "@/public/youvstop250.png";
 import screenshotAllPlayers from "@/public/allPlayers.png";
-import { Lexend } from "next/font/google";
+import { Lexend, Bricolage_Grotesque } from "next/font/google";
 
 const lexend = Lexend({ subsets: ["latin"] });
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
 
 const features = [
   {
@@ -76,7 +77,7 @@ export function PrimaryFeatures() {
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <h2
             id="features-title"
-            className={`${lexend.className} text-3xl tracking-tight text-white sm:text-4xl md:text-5xl`}
+            className={`${bricolage.className} text-3xl tracking-tight text-white sm:text-4xl md:text-5xl`}
           >
             everything you need to win.
           </h2>

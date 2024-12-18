@@ -22,15 +22,20 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "lib/authOptions.js", "app/api/auth/[...nextauth]/route.js"  ],
+    "**/*.tsx",
+    "lib/authOptions.js",
+    "app/api/auth/[...nextauth]/route.js"
+  ],
   "exclude": [
     "node_modules"
   ]

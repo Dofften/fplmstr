@@ -1,4 +1,5 @@
 import { Lexend } from "next/font/google";
+import Link from "next/link";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -40,10 +41,10 @@ export default function Loading() {
           <p className="mt-4 text-lg tracking-tight text-slate-700">
             We are organizing the data for you as fast as we can!
           </p>
-          <a
+          <Link
             className="mt-6 text-base font-medium text-blue-600 hover:text-blue-800"
             href="/"
-          ></a>
+          ></Link>
         </div>
       </div>
     </div>

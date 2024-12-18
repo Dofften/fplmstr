@@ -19,7 +19,7 @@ export default function HomeHeader({ className, items, ...props }) {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">FPL Mstr</span>
             <Image
               className="h-8 w-auto"
@@ -29,7 +29,7 @@ export default function HomeHeader({ className, items, ...props }) {
               alt="FPL Mstr Logo"
               unoptimized
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button

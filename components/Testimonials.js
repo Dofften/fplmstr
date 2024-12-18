@@ -1,8 +1,9 @@
 "use client";
 
-import { Lexend } from "next/font/google";
+import { Lexend, Bricolage_Grotesque } from "next/font/google";
 
 const lexend = Lexend({ subsets: ["latin"] });
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
 
 const testimonials = [
   [
@@ -72,7 +73,7 @@ export function Testimonials() {
         <div className="mx-auto max-w-2xl md:text-center">
           <h2
             id="testimonials-title"
-            className={`${lexend.className} text-3xl tracking-tight text-slate-900 sm:text-4xl`}
+            className={`${bricolage.className} text-3xl tracking-tight text-slate-900 sm:text-4xl`}
           >
             loved by serious fpl managers
           </h2>

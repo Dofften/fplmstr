@@ -1,15 +1,16 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Lexend } from "next/font/google";
+import { Lexend, Bricolage_Grotesque } from "next/font/google";
 
 const lexend = Lexend({ subsets: ["latin"] });
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"] });
 
 export function Hero() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
       <div className="pt-20 pb-16 text-center lg:pt-32">
         <h1
-          className={`mx-auto max-w-4xl ${lexend.className} text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl`}
+          className={`mx-auto max-w-4xl ${bricolage.className} text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl`}
         >
           win your{" "}
           <span className="relative whitespace-nowrap text-[#963cff]">

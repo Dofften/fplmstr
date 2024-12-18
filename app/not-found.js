@@ -1,4 +1,5 @@
 import { Lexend } from "next/font/google";
+import Link from "next/link";
 
 const lexend = Lexend({ subsets: ["latin"] });
 export default function Custom404() {
@@ -39,12 +40,12 @@ export default function Custom404() {
           <p className="mt-4 text-lg tracking-tight text-slate-700">
             Sorry, we couldn’t find the page you’re looking for.
           </p>
-          <a
+          <Link
             className="mt-6 text-base font-medium text-blue-600 hover:text-blue-800"
             href="/"
           >
             Go back home <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
