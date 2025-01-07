@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.10.0  # Use the desired Node.js version
+          node-version: 20.10.0 # Use the desired Node.js version
 
       - name: 🔨 Install dependencies and Build Project
         run: |
@@ -26,11 +26,3 @@ jobs:
           echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
           echo AUTHORIZATION=${{ secrets.AUTHORIZATION }} >> .env.local
           npm run build
-
-      - name: 📂 Sync files and deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ftp.crepant.com
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          server-dir: /
