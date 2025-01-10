@@ -204,7 +204,7 @@ export default async function Page() {
                     predictedPoints={player.preds}
                     captain={getPlayerCaptainStatus(player)}
                     news={player.news != "" ? player.news : null}
-                    image={player.image}
+                    image={`https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.photo}`}
                   />
                 ))}
             </div>
