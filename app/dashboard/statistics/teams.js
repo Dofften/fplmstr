@@ -20,10 +20,6 @@ export const teams = [
     label: "Brighton",
   },
   {
-    value: "Burnley",
-    label: "Burnley",
-  },
-  {
     value: "Chelsea",
     label: "Chelsea",
   },
@@ -40,12 +36,16 @@ export const teams = [
     label: "Fulham",
   },
   {
+    value: "Ipswich",
+    label: "Ipswich",
+  },
+  {
     value: "Liverpool",
     label: "Liverpool",
   },
   {
-    value: "Luton",
-    label: "Luton",
+    value: "Leicester",
+    label: "Leicester",
   },
   {
     value: "Man City",
@@ -64,8 +64,8 @@ export const teams = [
     label: "Nott'm Forest",
   },
   {
-    value: "Sheffield Utd",
-    label: "Sheffield Utd",
+    value: "Southampton",
+    label: "Southampton",
   },
   {
     value: "Spurs",
